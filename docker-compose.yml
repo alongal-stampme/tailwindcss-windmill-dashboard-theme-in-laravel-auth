@@ -45,4 +45,15 @@ services:
         entrypoint: ["npm"]
         networks:
             - your-network-name
+    composer:
+        build:
+            context: ""
+            dockerfile: ./docker/Dockerfile
+        container_name: composer
+        working_dir: /var/www/html
+        entrypoint: [ "composer" ]
+        volumes:
+            - ./src:/var/www/html:cached
+        networks:
+            - your-network-name
 

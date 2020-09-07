@@ -56,4 +56,17 @@ services:
             - ./src:/var/www/html:cached
         networks:
             - your-network-name
+    artisan:
+        build:
+            context: ""
+            dockerfile: ./docker/Dockerfile
+        container_name: artisan
+        depends_on:
+            - mysql
+        working_dir: /var/www/html
+        entrypoint: [ "/var/www/html/artisan" ]
+        volumes:
+            - ./src:/var/www/html:cached
+        networks:
+            - your-network-name
 
